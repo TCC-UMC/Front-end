@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'r';
+  font-family: 'Roboto', sans-serif;
+  background: #fafafa;
+  color: #333;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+div.left25 {
+  position: fixed;
+  left: 0;
+  width: 25%;
+  margin-top: 12%;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+.logon-container input {
+  width: 85%;
+  font-size: 32px;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: 1px #ccc solid;
+}
+
+.button {
+  color: #fff;
+  font-size: 32px;
+  padding: 5px 30px;
+  border: 0;
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-green {
+  background-color: #008037;
+}
+
+.btn-red {
+  background-color: #FF1616;
+}
+
+.btn-grey {
+  background-color: #545454;
+}
