@@ -32,6 +32,11 @@ export const Row = styled.div`
   resize: vertical;
 }
 
+  textarea {
+    width: 100%;
+    height: 100%;
+  }
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;

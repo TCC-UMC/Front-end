@@ -39,19 +39,27 @@ export default function NewPanelist() {
           </Row>
           <Row>
             <Col25>
+              <label>CPF</label>
+            </Col25>
+            <Col75>
+            <input type="text" name="cpf" placeholder="CPF"/>
+            </Col75>
+          </Row>
+          <Row>
+            <Col25>
+              <label>Informações/Curriculo</label>
+            </Col25>
+            <Col75>
+              <textarea name="descricao" id=""  rows="10"/>
+            </Col75>
+          </Row>
+          <Row>
+            <Col25>
               <label>Data de nascimento</label>
             </Col25>
             <Col75>
               <input type="date" required="required" maxlength="10" name="date" 
                 pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1920-01-01" max="2010-01-01" />
-            </Col75>
-          </Row>
-          <Row>
-            <Col25>
-              <label>CPF</label>
-            </Col25>
-            <Col75>
-            <input type="text" name="cpf" placeholder="CPF"/>
             </Col75>
           </Row>
           <Row>

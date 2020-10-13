@@ -17,7 +17,15 @@ export default function NewEvent() {
               <label>Tema</label>
             </Col25>
             <Col75>
-              <input type="text" placeholder="Tema ou Titulo do evento"/>
+              <input type="text" placeholder="Tema ou Titulo do evento" required="required"/>
+            </Col75>
+          </Row>
+          <Row>
+            <Col25>
+              <label>Descrição</label>
+            </Col25>
+            <Col75>
+              <textarea name="descricao" id=""  rows="10"/>
             </Col75>
           </Row>
           <Row>
@@ -25,7 +33,15 @@ export default function NewEvent() {
               <label>Local</label>
             </Col25>
             <Col75>
-              <input type="text" placeholder="Local"/>
+              <input type="text" placeholder="Local" required="required"/>
+            </Col75>
+          </Row>
+          <Row>
+            <Col25>
+              <label>Capacidade máxima</label>
+            </Col25>
+            <Col75>
+              <input type="number" placeholder="Capacidade máxima" required="required"/>
             </Col75>
           </Row>
           <Row>
@@ -53,7 +69,7 @@ export default function NewEvent() {
               <label>Horario Inicio</label>
             </Col25>
             <Col75>
-              <input type="time" name="time" />
+              <input type="time" name="time" required="required"/>
             </Col75>
           </Row>
           <Row>
@@ -61,7 +77,7 @@ export default function NewEvent() {
               <label>Horario Fim</label>
             </Col25>
             <Col75>
-              <input type="time" name="time" />
+              <input type="time" name="time" required="required"/>
             </Col75>
           </Row>
           <Row>

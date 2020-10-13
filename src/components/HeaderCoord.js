@@ -7,6 +7,7 @@ const HeaderUser = () => (
     <NavItem exact to="/criar-evento">Criar Evento</NavItem>
     <NavItem exact to="/gerar-relatorios">Relatórios</NavItem>
     <NavItem exact to="/palestrantes">Palestrantes</NavItem>
+    <NavItem exact to="/perfil-coord">Editar perfil</NavItem>
     <Logout exact to="/">Sair</Logout>
   </Header>
 );
