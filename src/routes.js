@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, BrowserRouter, Route, Switch } from 'react-router-dom';
+import {history} from './services/history';
+import PrivateRoute from './services/PrivateRoute';
 
 import Logon from './pages/Logon.js';
 import RecoverPassword from './pages/RecoverPassword.js';
@@ -23,24 +25,24 @@ import {GlobalStyle} from './Styles/Global';
 
 export default function Routes() {
     return (
-        <BrowserRouter>
+        <Router history={history}>
             <GlobalStyle/>
             <Switch>
                 <Route path="/" exact component={Logon} />
                 <Route path="/recuperar-senha" component={RecoverPassword} />
                 <Route path="/registro" component={Register} />
-                <Route path="/todos-eventos" exact component={HomeUser} />
-                <Route path="/eventos-participados" exact component={EventsUser} />
-                <Route path="/perfil-user" exact component={EditUser} />
-                <Route path="/meus-eventos" exact component={HomeCoord} />
-                <Route path="/criar-evento" exact component={NewEvent} />
-                <Route path="/gerar-relatorios" exact component={Report} />
-                <Route path="/palestrantes" exact component={Panelist} />
-                <Route path="/cadastrar-palestrante" exact component={NewPanelist} />
-                <Route path="/perfil-coord" exact component={EditCoord} />
-                <Route path="/coordenadores" exact component={HomeAdm} />
-                <Route path="/cadastrar-coordenadores" exact component={NewCoord} />  
+                <PrivateRoute path="/todos-eventos" exact component={HomeUser} />
+                <PrivateRoute path="/eventos-participados" exact component={EventsUser} />
+                <PrivateRoute path="/perfil-user" exact component={EditUser} />
+                <PrivateRoute path="/meus-eventos" exact component={HomeCoord} />
+                <PrivateRoute path="/criar-evento" exact component={NewEvent} />
+                <PrivateRoute path="/gerar-relatorios" exact component={Report} />
+                <PrivateRoute path="/palestrantes" exact component={Panelist} />
+                <PrivateRoute path="/cadastrar-palestrante" exact component={NewPanelist} />
+                <PrivateRoute path="/perfil-coord" exact component={EditCoord} />
+                <PrivateRoute path="/coordenadores" exact component={HomeAdm} />
+                <PrivateRoute path="/cadastrar-coordenadores" exact component={NewCoord} />  
             </Switch>
-        </BrowserRouter>
+        </Router>
     );
 }

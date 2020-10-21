@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Api from '../services/api';
+import { history } from '../services/history';
 
 import { Text, Right75 } from '../Styles/Logon';
 import { InputRegister, Left25R, ButtonR } from '../Styles/Register';
@@ -43,10 +44,19 @@ export default function Register() {
       const response = await Api.post('/auth/register', data, {
         headers: headers
       });
-      console.log(response);
+      
+      if (response.status === 201) {
+        console.log(response);
+        alert("Cadastro efetuado com sucesso, use seu email e senha para logar.");
+        return history.push('/');
+      }
     } catch(err) {
-      alert('Erro no cadastro, tente novamente');
+      if (err) {
+        console.log(err.response.data.error);
+        alert(err.response.data.error)
+      }
     }
+    
   }
 
   return (
@@ -79,14 +89,15 @@ export default function Register() {
               name="cpf" 
               value={CPF}
               onChange={e => setCpf(e.target.value)}
-              placeholder="CPF: (xxx.xxx.xxx-xx)" />
+              title="Número de telefone precisa ser no formato xxx.xxx.xxx-xx" 
+              placeholder="CPF: (xxx.xxx.xxx-xx)"
+              required />
 
             <InputRegister type="text" 
               placeholder="Celular: (99) 9999-9999"
               value={Telefone}
               onChange={e => setTel(e.target.value)}
-              title="Número de telefone precisa ser no formato (99) 9999-9999" 
-              required="required" />
+              required />
 
             <InputRegister type="text" 
               value={Profissao}
@@ -94,11 +105,12 @@ export default function Register() {
               placeholder="Profissão" 
               required />
 
-            <InputRegister type="text" 
+            <InputRegister type="date"
+              max="2010-12-31"
+              min="1920-01-02"
               value={DataDeNascimento}
               onChange={e => setDate(e.target.value)}
               required />
-
             <br/>
 
             <InputRegister type="text" 
