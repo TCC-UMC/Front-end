@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Api from '../services/api';
 import { history } from '../services/history';
 
@@ -76,7 +76,6 @@ export default function Register() {
               placeholder="Email"
               value={Email}
               onChange={e => setEmail(e.target.value)}
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               required />
 
             <InputRegister type="password" 
@@ -91,6 +90,7 @@ export default function Register() {
               onChange={e => setCpf(e.target.value)}
               title="Número de telefone precisa ser no formato xxx.xxx.xxx-xx" 
               placeholder="CPF: (xxx.xxx.xxx-xx)"
+              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
               required />
 
             <InputRegister type="text" 
@@ -106,8 +106,7 @@ export default function Register() {
               required />
 
             <InputRegister type="date"
-              max="2010-12-31"
-              min="1920-01-02"
+              max="2010-12-31" min="1920-01-02"
               value={DataDeNascimento}
               onChange={e => setDate(e.target.value)}
               required />

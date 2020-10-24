@@ -1,75 +1,76 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Api from '../../services/api';
+
 import { Container } from '../../Styles/Container';
 import Header from '../../components/HeaderCoord';
 import * as S from '../../Styles/EventsList';
 
-export default function HomeCoord() {
-  return (
-  <>
-    <Header/>
-    <Container>
-      <S.Title>Eventos criado por você</S.Title>
-      <S.List>
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presençass</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presenças</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presenças</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presenças</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
+export default function HomeCoord() {  
+  const [events, setEvents] = useState([]);
+  const token = localStorage.getItem('token');
 
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presenças</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presenças</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presenças</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
-        <S.Event>
-          <S.DateTime>Sexta, 5 de junho de 2020, 19:00</S.DateTime>
-          <S.TitleDiv>Palestra da informatica</S.TitleDiv>
-          <S.Venue><strong>Local: </strong> Teatro umc</S.Venue>
-          <S.Button>Presenças</S.Button>
-          <S.Button>Certificados</S.Button>
-        </S.Event>
-      </S.List>
-      
-    </Container>
-  </>
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization' : 'bearer ' + token
+  }
+  
+  useEffect(() => {
+    async function getEvents() {
+        try {
+          const response = await Api.get('/loggedUser/listPalestras', {
+            headers: headers
+            
+          });
+          console.log(response);
+          setEvents(response.data.message);
+        } catch(err) {
+          if (err) {
+            console.log(err.response.data.error);
+            alert(err.response.data.error)
+          }
+        }
+      }
+     
+    getEvents();
+  }, []); //eslint-disable-line
+
+  return (
+    <>
+    <Header/>
+      <Container>
+        <S.Title>Todos eventos</S.Title>
+          
+          <S.List >
+          {events.map(event => (
+            <S.Event key={event.idPalestra}>
+            <S.DateTime>
+                {event.Data}
+              </S.DateTime>
+              <S.TitleDiv>
+               {event.Descricao}
+              </S.TitleDiv>
+              <S.Venue>
+                <strong>Local: </strong> {event.Local}
+                <br/>
+                <strong>Capaxidade máxima </strong> {event.CapMax}
+              </S.Venue>
+              <S.Venue>
+                <strong>Inicio: </strong> {event.HoraInicio}
+                <br/>
+                <strong>Termino: </strong> {event.HorarioTermino}
+              </S.Venue>
+              <S.Venue>
+                <strong>Palestrante: </strong> {event.NomePalestrante}
+              </S.Venue>
+              <S.Button>
+                Editar
+              </S.Button>
+            </S.Event>
+            ))};
+          </S.List>
+        
+
+      </Container>
+    </>
   );
 }

@@ -10,6 +10,8 @@ import { history } from '../services/history';
 export default function Logon() {
   const [Email, setEmail] = useState("");
   const [Senha, setPassword] = useState("");
+  
+  localStorage.setItem('token', "0");
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -25,10 +27,21 @@ export default function Logon() {
       const user = response.data.auth;
       console.log(user);
       if(response.data.auth.Type === "participante"){
-        localStorage.setItem('token', user.token)
-        localStorage.setItem('type', user.Type)
-        history.push("/todos-eventos")
+        localStorage.token = user.token;
+        localStorage.setItem('type', user.Type);
+        history.push("/todos-eventos");
       }
+      else if (response.data.auth.Type === "coordenador" && response.data.auth.isGestor === false) {
+        localStorage.token = user.token;
+        localStorage.setItem('type', user.Type);
+        history.push("/meus-eventos");
+      }
+      else if (response.data.auth.Type === "coordenador" && response.data.auth.isGestor === true) {
+        localStorage.token = user.token;
+        localStorage.setItem('type', user.Type);
+        history.push("/coordenadores");
+      }
+      
         
     } catch (err) {
       if (err.response) {
@@ -38,8 +51,6 @@ export default function Logon() {
      
     }
   }
-
-  
 
   return (
     <FlexCenter>

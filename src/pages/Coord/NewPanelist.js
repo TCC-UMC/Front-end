@@ -1,24 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
+import Api from '../../services/api';
+import { history } from '../../services/history';
+
+import Header from '../../components/HeaderCoord';
+
 import { Button, Title } from '../../Styles/Logon';
 import { Row, Col25, Col75, ContainerC } from '../../Styles/NewEvent';
 import {Container} from '../../Styles/Container'
-import Header from '../../components/HeaderCoord';
-import {Link} from 'react-router-dom'
+
 
 export default function NewPanelist() {
+  const [Nome, setNome] = useState('');
+  const [CPF, setCPF] = useState('');
+  const [Telefone, setTelefone] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Curriculo, setCurriculo] = useState('');
+  const [DataNascimento, setDataNascimento] = useState('');
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'bearer ' + localStorage.getItem('token')
+  }
+
+  async function handleRegister(e) {
+    e.preventDefault();
+  
+    const data = {
+      Nome,
+      CPF,
+      Telefone,
+      Email,
+      Curriculo,
+    };
+  
+    try {
+      const response = await Api.post('/loggedUser/registerPalestrante', data, {
+        headers: headers
+      });
+      if (response.status === 201) {
+        console.log(response);
+        alert("Coordenador cadastrado com sucesso.");
+        return history.push('/palestrantes');
+      }
+    } catch(err) {
+      if (err) {
+        console.log(err.response.data.error);
+        alert(err.response.data.error)
+      }
+    }
+  }
+
   return(
     <>
     <Header/>
     <Container>
     <Title>Digite os dados do palestrante e clique em confirmar.</Title>
         <ContainerC>
-        <form>
+        <form onSubmit={handleRegister}>
           <Row>
             <Col25>
               <label>Nome</label>
             </Col25>
             <Col75>
-              <input type="text" placeholder="Nome Palestrante"/>
+              <input
+                value={Nome} 
+                onChange={e => setNome(e.target.value)}
+                type="text" 
+                placeholder="Nome Palestrante"
+                required="required"/>
             </Col75>
           </Row>
           <Row>
@@ -26,7 +76,12 @@ export default function NewPanelist() {
               <label>Email</label>
             </Col25>
             <Col75>
-              <input type="email" placeholder="Email"/>
+              <input
+                value={Email} 
+                onChange={e => setEmail(e.target.value)}
+                type="email" 
+                placeholder="Email"
+                required="required"/>
             </Col75>
           </Row>
           <Row>
@@ -34,7 +89,12 @@ export default function NewPanelist() {
               <label>Telefone</label>
             </Col25>
             <Col75>
-            <input type="tel" placeholder="Telefone" required="required"  />
+            <input
+              value={Telefone} 
+              onChange={e => setTelefone(e.target.value)}
+              type="tel" 
+              placeholder="Telefone" 
+              required="required"/>
             </Col75>
           </Row>
           <Row>
@@ -42,7 +102,13 @@ export default function NewPanelist() {
               <label>CPF</label>
             </Col25>
             <Col75>
-            <input type="text" name="cpf" placeholder="CPF"/>
+            <input
+              value={CPF} 
+              onChange={e => setCPF(e.target.value)}
+              type="text" 
+              name="cpf" 
+              placeholder="CPF"
+              required="required"/>
             </Col75>
           </Row>
           <Row>
@@ -50,7 +116,12 @@ export default function NewPanelist() {
               <label>Informações/Curriculo</label>
             </Col25>
             <Col75>
-              <textarea name="descricao" id=""  rows="10"/>
+              <textarea
+                value={Curriculo} 
+                onChange={e => setCurriculo(e.target.value)}
+                name="descricao" 
+                id="" 
+                rows="10"/>
             </Col75>
           </Row>
           <Row>
@@ -58,15 +129,20 @@ export default function NewPanelist() {
               <label>Data de nascimento</label>
             </Col25>
             <Col75>
-              <input type="date" required="required" maxlength="10" name="date" 
-                pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1920-01-01" max="2010-01-01" />
+              <input
+                value={DataNascimento} 
+                onChange={e => setDataNascimento(e.target.value)}
+                type="date" 
+                name="date" 
+                pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" 
+                min="1920-01-01" max="2010-01-01"
+                required="required" />
             </Col75>
           </Row>
           <Row>
             <Link to="/palestrantes" className="decoration-none ">
               <Button>Voltar</Button>
             </Link>
-            
           </Row>
           <Row>
             <Button buttonColor="#008037">Confirmar</Button>
