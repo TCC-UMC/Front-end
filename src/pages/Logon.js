@@ -70,7 +70,7 @@ export default function Logon() {
             value={Senha}
             onChange={e => setPassword(e.target.value)}
             required/>
-          <LinkBlue to="/recuperar-senha">   
+          <LinkBlue to="/redefinir-senha">   
               Esqueci minha senha
           </LinkBlue>
           <Button type="submit" buttonColor="#008037">Entrar</Button>

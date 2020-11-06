@@ -22,6 +22,7 @@ import HomeAdm from './pages/Adm/HomeAdm';
 import NewCoord from './pages/Adm/NewCoord';
 
 import {GlobalStyle} from './Styles/Global';
+import ResetPassword from './pages/ResetPassword';
 
 export default function Routes() {
     return (
@@ -29,9 +30,9 @@ export default function Routes() {
             <GlobalStyle/>
             <Switch>
                 <Route exact path="/" component={Logon} />
-                <Route exact path="/recuperar-senha" component={RecoverPassword} />
+                <Route exact path="/redefinir-senha/" component={RecoverPassword} />
                 <Route exact path="/registro" component={Register} />
-
+                <Route exact path="/recuperar-senha/" component={ResetPassword}/>
                 <PrivateRoute role={['user']} exact path="/todos-eventos"  component={HomeUser} />
                 <PrivateRoute role={['user']} exact path="/eventos-participados"  component={EventsUser} />
                 <PrivateRoute role={['user']} exact path="/perfil-user"  component={EditUser} />
