@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link} from 'react-router-dom'
 
 export const List = styled.div`
   display: grid;
@@ -27,17 +28,34 @@ export const TitleDiv = styled.h3`
   font-weight: 600;
 `;
 
+export const LinkBlue = styled(Link)`
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid #195088;
+  color: #195088;
+  font-weight: bold;
+  font-size: 12px;
+  display: inline-block;
+  margin: 5px;
+  &:hover {
+    background-color: #0098ab;
+    color: #FFF;
+    border: none;
+  }
+`;
+
 export const Venue = styled.p``;
 
 export const Button = styled.button`
-  height: 42px;
+  height: 40px;
   border-radius: 5px;
   border: 2px solid #195088;
   background: none;
   margin: 5px;
   color: #195088;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
 
   &:hover {

@@ -12,6 +12,7 @@ export default function Logon() {
   const [Senha, setPassword] = useState("");
   
   localStorage.setItem('token', "0");
+  localStorage.setItem('type', "0");
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -29,7 +30,7 @@ export default function Logon() {
       if(response.data.auth.Type === "participante"){
         localStorage.token = user.token;
         localStorage.setItem('type', user.Type);
-        history.push("/todos-eventos");
+        history.push("/eventos");
       }
       else if (response.data.auth.Type === "coordenador" && response.data.auth.isGestor === false) {
         localStorage.token = user.token;
@@ -41,8 +42,6 @@ export default function Logon() {
         localStorage.setItem('type', user.Type);
         history.push("/coordenadores");
       }
-      
-        
     } catch (err) {
       if (err.response) {
         console.log(err.response.data.error);
@@ -70,7 +69,7 @@ export default function Logon() {
             value={Senha}
             onChange={e => setPassword(e.target.value)}
             required/>
-          <LinkBlue to="/redefinir-senha">   
+          <LinkBlue to="/recuperar-senha">   
               Esqueci minha senha
           </LinkBlue>
           <Button type="submit" buttonColor="#008037">Entrar</Button>

@@ -7,6 +7,7 @@ import * as S from '../../Styles/EventsList';
 
 export default function HomeCoord() {  
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState('loading');
   const token = localStorage.getItem('token');
 
   const headers = {
@@ -17,11 +18,11 @@ export default function HomeCoord() {
   useEffect(() => {
     async function getEvents() {
         try {
-          const response = await Api.get('/loggedUser/listPalestras', {
+          const response = await Api.get('/loggedUser/PalestrasCoord', {
             headers: headers
-            
           });
           console.log(response);
+          setLoading('0');
           setEvents(response.data.message);
         } catch(err) {
           if (err) {
@@ -34,43 +35,75 @@ export default function HomeCoord() {
     getEvents();
   }, []); //eslint-disable-line
 
+
   return (
     <>
-    <Header/>
-      <Container>
-        <S.Title>Todos eventos</S.Title>
-          
-          <S.List >
-          {events.map(event => (
-            <S.Event key={event.idPalestra}>
-            <S.DateTime>
-                {event.Data}
-              </S.DateTime>
-              <S.TitleDiv>
-               {event.Descricao}
-              </S.TitleDiv>
-              <S.Venue>
-                <strong>Local: </strong> {event.Local}
-                <br/>
-                <strong>Capaxidade máxima </strong> {event.CapMax}
-              </S.Venue>
-              <S.Venue>
-                <strong>Inicio: </strong> {event.HoraInicio}
-                <br/>
-                <strong>Termino: </strong> {event.HorarioTermino}
-              </S.Venue>
-              <S.Venue>
-                <strong>Palestrante: </strong> {event.NomePalestrante}
-              </S.Venue>
-              <S.Button>
-                Editar
-              </S.Button>
-            </S.Event>
-            ))};
-          </S.List>
-        
+    {
+      events[0] && (
+        <>
+          <Header/>
+          <Container>
+            <S.Title>Eventos cadastradas por você</S.Title>
+            <S.List >
+            {events.map(event => (
+              <S.Event key={event.idPalestra}>
+              <S.DateTime>
+                  {event.Data}
+                </S.DateTime>
+                <S.TitleDiv>
+                {event.Tema}
+                </S.TitleDiv>
+                <S.Venue>
+                  <strong>Local: </strong> {event.locai.Nome}
+                  <br/>
+                  <strong>Capaxidade máxima </strong> {event.CapMax}
+                </S.Venue>
+                <S.Venue>
+                  <strong>Inicio: </strong> {event.HorarioInicio}
+                  <br/>
+                  <strong>Termino: </strong> {event.HorarioTermino}
+                </S.Venue>
+                <S.Venue>
+                  <strong>Palestrante: </strong> {event.Palestrante.Nome}
+                </S.Venue>
+                <S.LinkBlue to={`/evento/${event.idPalestra}`}>
+                  Acessar
+                </S.LinkBlue>
+              </S.Event>
+              ))}
+            </S.List>
+          </Container>
+        </>
+      )
+      
+    }
 
-      </Container>
+{
+      loading === 'loading' && (
+        <>
+          <Header/>
+          <Container>
+            <br/>
+            <br/>
+            <S.Title>Carregando ...</S.Title>
+          </Container>
+        </>
+      )
+    }
+
+    {
+      !events[0] && loading === '0' && (
+        <>
+          <Header/>
+          <Container>
+            <br/>
+            <br/>
+            <S.Title>Você ainda não cadastrou nenhum evento.</S.Title>
+          </Container>
+        </>
+      )
+    }
+
     </>
   );
 }

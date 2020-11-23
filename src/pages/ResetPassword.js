@@ -11,6 +11,7 @@ import logo_umc from '../img/logo_umc.png';
 
 export default function ResetPassword() {
   const [Senha, setPassword] = useState('');
+  const [ConfirmarSenha, setConfirmarSenha] = useState('');
 
   const location = useLocation();
   let search = location.search;
@@ -20,6 +21,10 @@ export default function ResetPassword() {
 
   async function handleRegister(e) {
     e.preventDefault();
+
+    if(Senha !== ConfirmarSenha) {
+      return alert('As senhas precisam ser iguais.');
+    }
 
     const headers = {
       'Content-Type': 'application/json'
@@ -59,6 +64,12 @@ export default function ResetPassword() {
               placeholder="Senha" 
               value={Senha}
               onChange={e => setPassword(e.target.value)}
+              required />
+
+            <InputRegister type="password"
+              placeholder="Confirmar senha"
+              value={ConfirmarSenha}
+              onChange={e => setConfirmarSenha(e.target.value)}
               required />
 
             <ButtonR buttonColor="#008037" type="submit">Alterar</ButtonR>

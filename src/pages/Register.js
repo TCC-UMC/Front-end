@@ -14,6 +14,7 @@ export default function Register() {
   const [Nome, setName] = useState('');
   const [Email, setEmail] = useState('');
   const [Senha, setPassword] = useState('');
+  const [ConfirmarSenha, setConfirmarSenha] = useState('');
   const [Telefone, setTel] = useState('');
   const [CPF, setCpf] = useState('');
   const [Profissao, setProfession] = useState('');
@@ -23,6 +24,10 @@ export default function Register() {
 
   async function handleRegister(e) {
     e.preventDefault();
+
+    if(Senha !== ConfirmarSenha) {
+      return alert('As senhas precisam ser iguais.');
+    }
 
     const headers = {
       'Content-Type': 'application/json'
@@ -62,7 +67,7 @@ export default function Register() {
   return (
     <FlexCenter>
         <Left25R>
-          <img src={logo_umc} width="65%" alt="logo_umc"/>
+          <img src={logo_umc} width="40%" alt="logo_umc"/>
           <Text>Digite suas informações e clique em confirmar para se registrar</Text>
           <form onSubmit={handleRegister}>
 
@@ -84,11 +89,17 @@ export default function Register() {
               onChange={e => setPassword(e.target.value)}
               required />
 
+            <InputRegister type="password"
+              placeholder="Confirmar senha"
+              value={ConfirmarSenha}
+              onChange={e => setConfirmarSenha(e.target.value)}
+              required />
+
             <InputRegister type="text" 
               name="cpf" 
               value={CPF}
               onChange={e => setCpf(e.target.value)}
-              title="Número de telefone precisa ser no formato xxx.xxx.xxx-xx" 
+              title="Número de CPF precisa ser no formato xxx.xxx.xxx-xx" 
               placeholder="CPF: (xxx.xxx.xxx-xx)"
               pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
               required />
@@ -105,8 +116,10 @@ export default function Register() {
               placeholder="Profissão" 
               required />
 
-            <InputRegister type="date"
-              max="2010-12-31" min="1920-01-02"
+            <InputRegister
+              placeholder='Data: yyyy-mm-dd'
+              type="text"
+              patter='[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])'
               value={DataDeNascimento}
               onChange={e => setDate(e.target.value)}
               required />

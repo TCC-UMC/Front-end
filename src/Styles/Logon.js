@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import banner_login from '../img/banner_login.jpg';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 export const Left25 = styled.div`
   position: fixed;
@@ -19,21 +19,21 @@ export const Right75 = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 32px;
+  font-size: 30px;
   font-weight: normal;
   text-align: center;
 `;
 
 export const Input = styled.input`
   width: 85%;
-  font-size: 20px;
+  font-size: 18px;
   margin: 10px 0;
   padding: 5px 10px;
   border: 1px #ccc solid;
 `;
 
 export const LinkBlue = styled(Link)`
-  font-size: 24px;
+  font-size: 22px;
   color: #093E80;
   text-decoration: none;
 `;
@@ -41,7 +41,7 @@ export const LinkBlue = styled(Link)`
 export const Button = styled.button`
   background-color: ${props => props.buttonColor || "#545454"};;
   color: #fff;
-  font-size: 32px;
+  font-size: 30px;
   padding: 5px 30px;
   border: 0;
   margin-top: 20px;
@@ -50,7 +50,7 @@ export const Button = styled.button`
 `;
 
 export const LinkGrey = styled(Link)`
-  font-size: 21px;
+  font-size: 20px;
   display: block;
   margin-top: 30px;
   color: #333;

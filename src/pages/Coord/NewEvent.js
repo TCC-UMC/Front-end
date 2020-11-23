@@ -9,12 +9,14 @@ import Header from '../../components/HeaderCoord';
 
 export default function NewEvent() {
   const [palestrantes, setPalestrantes] = useState([]);
+  const [locais, setLocais] = useState([0]);
   const [Descricao, setDescricao] = useState('');
-  const [Local, setLocal] = useState('');
-  const [CapMax, setCapMax] = useState('');
+  const [Tema, setTema] = useState('');
+  const [fkLocais, setLocal] = useState();
+  const [CapMax, setCapMax] = useState(0);
   const [HorarioInicio, setHoraInicio] = useState('');
   const [HorarioTermino, setHoraTermino] = useState('');
-  const [fkPalestrante, setPalestrante] = useState('');
+  const [fkPalestrante, setPalestrante] = useState(0);
   const [Data, setData] = useState('');
 
   const headers = {
@@ -41,12 +43,32 @@ export default function NewEvent() {
     getPalestrantes();
   }, []); //eslint-disable-line
 
+  useEffect(() => {
+    async function getLocais() {
+        try {
+          const response = await Api.get('/loggedUser/listLocais', {
+            headers: headers
+          });
+          console.log(response);
+          setLocais(response.data.message);
+        } catch(err) {
+          if (err) {
+            console.log(err.response.data.error);
+            alert(err.response.data.error)
+          }
+        }
+      }
+     
+    getLocais();
+  }, []); //eslint-disable-line
+
   async function handleRegister(e) {
     e.preventDefault();
-  
+   
     const data = {
+      Tema,
       Descricao,
-      Local,
+      fkLocais,
       CapMax,
       HorarioInicio,
       HorarioTermino,
@@ -55,7 +77,11 @@ export default function NewEvent() {
     };
   
     try {
-      console.log(data);
+      console.log(data.Data);
+      console.log(typeof(data.HorarioInicio));
+      console.log(typeof(data.HorarioTermino));
+      console.log(typeof(data.fkLocais));
+      console.log("Isso aqui >" + data);
       const response = await Api.post('/loggedUser/registerPalestra', data, {
         headers: headers
       });
@@ -67,7 +93,7 @@ export default function NewEvent() {
       }
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
+        console.log(err.response);
         alert(err.response.data.error)
       }
     }
@@ -80,29 +106,30 @@ export default function NewEvent() {
     <Title>Digite as informações do evento e clique em confirmar.</Title>
         <ContainerC>
         <form onSubmit={handleRegister}>
-          <Row>
+        <Row>
             <Col25>
-              <label>Descrição</label>
+              <label>Tema</label>
             </Col25>
             <Col75>
               <input
-                value={Descricao} 
-                onChange={e => setDescricao(e.target.value)}
+                value={Tema} 
+                onChange={e => setTema(e.target.value)}
                 type="text"
-                placeholder="Tema ou Titulo do evento" 
+                placeholder="Tema do evento" 
                 required="required"/>
             </Col75>
           </Row>
           <Row>
             <Col25>
-              <label>Local</label>
+              <label>Descrição</label>
             </Col25>
             <Col75>
-              <input 
-                value={Local} 
-                onChange={e => setLocal(e.target.value)}
-                type="text" 
-                placeholder="Local" 
+              <textarea
+                value={Descricao} 
+                onChange={e => setDescricao(e.target.value)}
+                id="desc" 
+                rows="10"
+                placeholder="Descricao do evento" 
                 required="required"/>
             </Col75>
           </Row>
@@ -113,10 +140,29 @@ export default function NewEvent() {
             <Col75>
               <input 
                 value={CapMax} 
-                onChange={e => setCapMax(e.target.value)}
-                type="number" 
+                onChange={e => setCapMax(parseInt(e.target.value))}
+                type="number"
                 placeholder="Capacidade máxima" 
                 required="required"/>
+            </Col75>
+          </Row>
+          <Row>
+            <Col25>
+              <label>Local</label>
+            </Col25>
+            <Col75>
+              <select
+                onChange={e => setLocal(parseInt(e.target.value))}
+                value={fkLocais} >
+                <option>Local</option>
+                {locais.map(local => (
+                  <option
+                    key={local.idLocal} 
+                    value={local.idLocal}>
+                    {local.Nome}
+                  </option>
+                ))};
+              </select>
             </Col75>
           </Row>
           <Row>
@@ -124,10 +170,10 @@ export default function NewEvent() {
               <label>Palestrante</label>
             </Col25>
             <Col75>
-            
               <select 
-                onChange={e => setPalestrante(e.target.value)}
+                onChange={e => setPalestrante(parseInt(e.target.value))}
                 value={fkPalestrante}>
+                <option>Palestrante</option>
                 {palestrantes.map(palestrante => (
                   <option
                     key={palestrante.idPalestrante} 
@@ -136,7 +182,6 @@ export default function NewEvent() {
                   </option>
                 ))};
               </select>
-           
             </Col75>
           </Row>
           <Row>
@@ -147,11 +192,10 @@ export default function NewEvent() {
               <input 
                 value={Data} 
                 onChange={e => setData(e.target.value)}
-                type="date" 
-                required="required" 
-                maxlength="10" 
-                name="date" 
-                pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" 
+                placeholder='yyyy-mm-dd'
+                type="text"
+                pattern='[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])'
+                required="required"
                />
             </Col75>
           </Row>

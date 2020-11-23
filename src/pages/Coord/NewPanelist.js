@@ -106,8 +106,9 @@ export default function NewPanelist() {
               value={CPF} 
               onChange={e => setCPF(e.target.value)}
               type="text" 
-              name="cpf" 
-              placeholder="CPF"
+              title="Número de CPF precisa ser no formato xxx.xxx.xxx-xx" 
+              placeholder="CPF: (xxx.xxx.xxx-xx)"
+              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
               required="required"/>
             </Col75>
           </Row>
@@ -120,7 +121,7 @@ export default function NewPanelist() {
                 value={Curriculo} 
                 onChange={e => setCurriculo(e.target.value)}
                 name="descricao" 
-                id="" 
+                id="CV" 
                 rows="10"/>
             </Col75>
           </Row>

@@ -9,8 +9,8 @@ import {Row} from '../../Styles/NewEvent';
 import {Button} from '../../Styles/Logon';
 import {Link} from 'react-router-dom';
 
-export default function Panelist() {
-  const [panelists, setPanelist] = useState([]);
+export default function Places() {
+  const [places, setPlaces] = useState([]);
   const token = localStorage.getItem('token');
 
   const headers = {
@@ -19,13 +19,13 @@ export default function Panelist() {
   }
   
   useEffect(() => {
-    async function getPanelist() {
+    async function getPlaces() {
         try {
-          const response = await Api.get('/loggedUser/listPalestrantes', {
+          const response = await Api.get('/loggedUser/listLocais', {
             headers: headers
           });
           console.log(response);
-          setPanelist(response.data.message);
+          setPlaces(response.data.message);
         } catch(err) {
           if (err) {
             console.log(err.response.data.error);
@@ -34,39 +34,35 @@ export default function Panelist() {
         }
       }
      
-    getPanelist();
+    getPlaces();
   }, []); //eslint-disable-line
 
   return (
   <>
     <Header/>
     <Container>
-      <Title>Lista de palestrantes</Title>
+      <Title>Lista de locais</Title>
         <Table>
           <thead>
             <tr>
-              <th width="20%">Nome</th>
-              <th width="25%">Email</th> 
-              <th width="20%">Telefone</th>
-              <th width="35%">Curriculo</th>
+              <th width="25%">ID</th>
+              <th width="75%">Nome</th>
             </tr>
           </thead>
-          <tbody>
-            {panelists.map(panelist => (
-            <tr key={panelist.idPalestrante}>
-              <td width="20%">{panelist.Nome}</td>
-              <td width="25%">{panelist.Email}</td>
-              <td width="20%">{panelist.Telefone}</td>
-              <td width="35%">{panelist.Curriculo}</td>
+          {places.map(place => (
+         <tbody key={place.idLocal}>
+            <tr>
+              <td width="25%">{place.idLocal}</td>
+              <td width="75%">{place.Nome}</td>
             </tr>
-            ))}
-          </tbody>
+         </tbody>
+        ))}
         </Table>
       <br/>
       <br/>
       <Row>
-      <Link to="/cadastrar-palestrante" className="decoration-none ">
-        <Button buttonColor="#195088">Cadastrar Novo Palestrante</Button>
+      <Link to="/cadastrar-local" className="decoration-none ">
+        <Button buttonColor="#195088">Cadastrar Novo Local</Button>
       </Link>
         
       </Row>

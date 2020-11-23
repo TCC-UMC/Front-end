@@ -3,16 +3,16 @@ import { Header, NavItem, Logout } from '../Styles/Header';
 
 const HeaderUser = () => (
   <Header>
-    <NavItem exact activeClassName="active" to="/todos-eventos">
-      Todos eventos
+    <NavItem activeClassName="active" to="/eventos">
+      Eventos
     </NavItem>
-    <NavItem exact to="/eventos-participados">
+    <NavItem to="/eventos-participados">
       Eventos Participados
     </NavItem>
-    <NavItem exact to="/perfil-user">
+    <NavItem to="/perfil-user">
       Editar Perfil
     </NavItem>
-    <Logout exat to="/">Sair</Logout>
+    <Logout to="/">Sair</Logout>
   </Header>
 );
 
