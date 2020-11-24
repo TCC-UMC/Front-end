@@ -7,8 +7,6 @@ import { Text, Right75 } from '../Styles/Logon';
 import { InputRegister, Left25R, ButtonR } from '../Styles/Register';
 import { FlexCenter } from '../Styles/FlexCenter';
 
-import logo_umc from '../img/logo_umc.png';
-
 export default function Register() {
 
   const [Nome, setName] = useState('');
@@ -67,8 +65,7 @@ export default function Register() {
   return (
     <FlexCenter>
         <Left25R>
-          <img src={logo_umc} width="40%" alt="logo_umc"/>
-          <Text>Digite suas informações e clique em confirmar para se registrar</Text>
+          <Text>Digite seus dados e clique em confirmar.</Text>
           <form onSubmit={handleRegister}>
 
             <InputRegister type="text" 
@@ -143,6 +140,8 @@ export default function Register() {
               <ButtonR>Voltar</ButtonR>
             </Link>
           </form>
+          <br/>
+          <br/>
         </Left25R>
         <Right75 />
     </FlexCenter>

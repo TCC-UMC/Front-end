@@ -54,7 +54,7 @@ export default function Logon() {
   return (
     <FlexCenter>
       <Left25>
-        <img src={logo_umc} width="65%" alt="logo_umc"/>
+        <img src={logo_umc} alt="logo_umc"/>
         <Title>Eventos e Palestras</Title>
         <form onSubmit={handleSubmit}>
           <Input 
@@ -69,9 +69,11 @@ export default function Logon() {
             value={Senha}
             onChange={e => setPassword(e.target.value)}
             required/>
+            <br/>
           <LinkBlue to="/recuperar-senha">   
               Esqueci minha senha
           </LinkBlue>
+          <br/>
           <Button type="submit" buttonColor="#008037">Entrar</Button>
         </form>
         <LinkGrey to="/registro"> Não tem conta? Registrar-se </LinkGrey>

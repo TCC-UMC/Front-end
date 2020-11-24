@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Api from '../../services/api';
 import {Link} from 'react-router-dom';
+import { history } from '../../services/history';
 
 import { Container } from '../../Styles/Container'
 import {Title, Button } from '../../Styles/EventsList';
@@ -18,7 +19,6 @@ export default function EditEvent({ match }) {
   const [HorarioTermino, setHorarioTermino] = useState('');
   const [fkLocais, setLocal] = useState();
   const [locais, setLocais] = useState([]);
-  const [palestrantes, setPalestrantes] = useState([]);
   const [Event, setEvent] = useState({});
   const [Data, setData] = useState('');
   const [data, setdata] = useState({});
@@ -51,34 +51,15 @@ export default function EditEvent({ match }) {
           }));
         } catch(err) {
           if (err) {
-            console.log(err);
-            alert(err);
-          }
-        }
-      }
-     
-    getEvent();
-  }, []); //eslint-disable-line
-
-  useEffect(() => {
-    async function getPalestrantes() {
-        try {
-          const response = await Api.get('/loggedUser/listPalestrantes', {
-            headers: headers
-          });
-          console.log(response);
-          setPalestrantes(response.data.message);
-        } catch(err) {
-          if (err) {
             console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }
       }
      
-    getPalestrantes();
+    getEvent();
   }, []); //eslint-disable-line
-
+  
   useEffect(() => {
     async function getLocais() {
         try {
@@ -173,6 +154,7 @@ export default function EditEvent({ match }) {
       });
       console.log(response);
       alert('Alterado com sucesso!');
+      return history.push(`/event/${idPalestra}`);
     } catch(err) {
       if (err) {
         console.log(err.response.data.error);

@@ -100,18 +100,18 @@ export default function LaunchPresence({ match }) {
             <Table>
               <thead>
                 <tr>
-                  <th width="20%">Nome</th>
+                  <th width="30%">Nome</th>
                   <th width="30%">Email</th>
-                  <th width="25%">Telefone</th>
+                  <th width="20%">Telefone</th>
                   <th width="20%">Presença</th>
                 </tr>
               </thead>
               <tbody>
                 {Participants.map(participant => (
                   <tr key={participant.idParticipante}>
-                    <td width="20%">{participant.Nome}</td>
+                    <td width="30%">{participant.Nome}</td>
                     <td width="30%">{participant.Email}</td>
-                    <td width="25%">{participant.Telefone}</td>
+                    <td width="20%">{participant.Telefone}</td>
                     <td width="20%">
                       {
                         participant.Inscricoes.Presenca === false && (

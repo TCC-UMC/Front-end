@@ -2,36 +2,32 @@ import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Header = styled.header`
-  width: 100%;
-  height: 34px;
-  font-weight: bold;
-  color: #FFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #023E7C;
+  overflow: hidden;
 `;
 
 export const NavItem = styled(NavLink)`
-  text-decoration: none;
+  float: left;
+  color: #f2f2f2;
   text-align: center;
-  color: #FFF;
-  font-size: 30px;
-  width: 100%;
-  height: 100%;
-  background: #023E7C;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
   &.active {
     background-color: #38B6FF;
+  }
+  @media(max-width: 800px) {
+    font-size: 85%;
   }
 `;
 
 export const Logout = styled(Link)`
-  border: none;
-  color: #FFF;
-  font-size: 30px;
-  width: 25%;
-  background: #023E7C;
-  text-decoration: none;
+  float: left;
+  color: #f2f2f2;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 `;
 
 

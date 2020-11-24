@@ -38,8 +38,8 @@ export default function Report({ match }) {
           } 
         } catch(err) {
           if (err) {
-            console.log(err);
-            alert(err)
+            console.log(err.response.data.error);
+            alert(err.response.data.error)
           }
         }
       }

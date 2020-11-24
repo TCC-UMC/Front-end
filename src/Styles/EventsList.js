@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom'
 export const List = styled.div`
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  @media(max-width: 800px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 export const Event = styled.div`

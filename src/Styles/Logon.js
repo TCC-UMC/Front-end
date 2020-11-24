@@ -7,6 +7,14 @@ export const Left25 = styled.div`
   left: 0;
   width: 25%;
   margin-top: 10%;
+
+  img {
+    width: 50%;
+  }
+  @media(max-width: 800px) {
+    position: relative;
+    width: 100%;
+  }
 `;
 
 export const Right75 = styled.div`
@@ -16,16 +24,20 @@ export const Right75 = styled.div`
   right: 0;
   background-image: url(${banner_login});
   background-size: 100% 100%;
+  @media(max-width: 800px) {
+    display: none;
+    width: 0;
+  }
 `;
 
 export const Title = styled.h2`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: normal;
   text-align: center;
 `;
 
 export const Input = styled.input`
-  width: 85%;
+  width: 90%;
   font-size: 18px;
   margin: 10px 0;
   padding: 5px 10px;
@@ -54,8 +66,12 @@ export const LinkGrey = styled(Link)`
   display: block;
   margin-top: 30px;
   color: #333;
+
 `;
 
 export const Text = styled.p`
   font-size: 22px;
+  @media(max-width: 800px) {
+    font-size: 16px;
+  }
 `;

@@ -45,6 +45,9 @@ export default function EventsList() {
                 {event.Data}
               </S.DateTime>
               <S.TitleDiv>
+                {event.Tema}
+                </S.TitleDiv>
+              <S.TitleDiv>
                {event.Descricao}
               </S.TitleDiv>
               <S.Venue>

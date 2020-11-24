@@ -16,7 +16,6 @@ export default function NewPanelist() {
   const [Telefone, setTelefone] = useState('');
   const [Email, setEmail] = useState('');
   const [Curriculo, setCurriculo] = useState('');
-  const [DataNascimento, setDataNascimento] = useState('');
 
   const headers = {
     'Content-Type': 'application/json',
@@ -40,7 +39,7 @@ export default function NewPanelist() {
       });
       if (response.status === 201) {
         console.log(response);
-        alert("Coordenador cadastrado com sucesso.");
+        alert("Palestrante cadastrado com sucesso.");
         return history.push('/palestrantes');
       }
     } catch(err) {
@@ -123,21 +122,6 @@ export default function NewPanelist() {
                 name="descricao" 
                 id="CV" 
                 rows="10"/>
-            </Col75>
-          </Row>
-          <Row>
-            <Col25>
-              <label>Data de nascimento</label>
-            </Col25>
-            <Col75>
-              <input
-                value={DataNascimento} 
-                onChange={e => setDataNascimento(e.target.value)}
-                type="date" 
-                name="date" 
-                pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" 
-                min="1920-01-01" max="2010-01-01"
-                required="required" />
             </Col75>
           </Row>
           <Row>
