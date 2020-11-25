@@ -1,15 +1,44 @@
 import React from 'react';
-import { Header, NavItem, Logout } from '../Styles/Header';
+import ResponsiveMenu from 'react-responsive-navbar';
+import { FaBars } from 'react-icons/fa';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import {Header, Menu, Navlink, Logout } from '../Styles/Header';
 
-const HeaderUser = () => (
+const HeaderCoord = () =>  (
   <Header>
-    <NavItem activeClassName="active" to="/meus-eventos">Meus eventos</NavItem>
-    <NavItem to="/criar-evento">Criar Evento</NavItem>
-    <NavItem to="/palestrantes">Palestrantes</NavItem>
-    <NavItem to="/locais">Locais</NavItem>
-    <NavItem to="/perfil-coord">Editar perfil</NavItem>
-    <Logout to="/">Sair</Logout>
+    <ResponsiveMenu
+    menuOpenButton={<FaBars size={30} color="#38B6FF" />}
+    menuCloseButton={<AiOutlineCloseCircle size={30} color="#38B6FF" />}
+    changeMenuOn="800px"
+    largeMenuClassName="large-menu"
+    smallMenuClassName="small-menu"
+    menu={
+      <Menu>
+        <ul>
+          <li>
+            <Navlink activeClassName="active" to="/meus-eventos">Meus eventos</Navlink>
+          </li>
+          <li>
+            <Navlink to="/criar-evento">Criar Evento</Navlink>
+          </li>
+          <li>
+            <Navlink to="/palestrantes">Palestrantes</Navlink>
+          </li>
+          <li>
+            <Navlink to="/locais">Locais</Navlink>
+          </li>
+          <li>
+            <Navlink to="/perfil-coord">Editar perfil</Navlink>
+          </li>
+          <li>
+            <Logout to="/">Sair</Logout>
+          </li>
+        </ul>
+      </Menu>
+    }
+  />
   </Header>
 );
 
-export default HeaderUser;
+
+export default HeaderCoord;

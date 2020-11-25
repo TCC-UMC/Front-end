@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 
+export const Divv = styled.div`
+  display: block;
+  background-color: #023E7C;
+  height: 120px;
+`;
+
 export const List = styled.div`
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;

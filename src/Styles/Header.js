@@ -1,34 +1,44 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Header = styled.header`
+export const Header = styled.div`
+  display: flex;
+  justify-content: center;
   background: #023E7C;
-  overflow: hidden;
 `;
 
-export const NavItem = styled(NavLink)`
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+export const Menu = styled.div`
+  border-bottom: 2px solid 023E7C;
+  ul {
+    padding: 0;
+  }
+  li {
+    display: inline;
+    font-size: 13px;
+    list-style-type: none;
+    margin-left: 25px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+  }
+  @media (max-width: 800px) {
+    padding: 10px 0;
+    li {
+      padding: 10px 0;
+      display: block;
+      margin-left: 0;
+    }
+  }
+`;
+
+export const Logout = styled(NavLink)`
+  font-size: 24px;
+`;
+
+export const Navlink = styled(NavLink)`
   &.active {
-    background-color: #38B6FF;
-  }
-  @media(max-width: 800px) {
-    font-size: 85%;
+    color: #38B6FF;
   }
 `;
-
-export const Logout = styled(Link)`
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-`;
-
-
-

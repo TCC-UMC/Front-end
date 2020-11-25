@@ -1,18 +1,36 @@
 import React from 'react';
-import { Header, NavItem, Logout } from '../Styles/Header';
+import ResponsiveMenu from 'react-responsive-navbar';
+import { FaBars } from 'react-icons/fa';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import {Header, Menu, Navlink, Logout } from '../Styles/Header';
 
 const HeaderUser = () => (
   <Header>
-    <NavItem activeClassName="active" to="/eventos">
-      Eventos
-    </NavItem>
-    <NavItem to="/eventos-participados">
-      Eventos Participados
-    </NavItem>
-    <NavItem to="/perfil-user">
-      Editar Perfil
-    </NavItem>
-    <Logout to="/">Sair</Logout>
+    <ResponsiveMenu
+    menuOpenButton={<FaBars size={30} color="#38B6FF" />}
+    menuCloseButton={<AiOutlineCloseCircle size={30} color="#38B6FF" />}
+    changeMenuOn="800px"
+    largeMenuClassName="large-menu"
+    smallMenuClassName="small-menu"
+    menu={
+      <Menu>
+        <ul>
+          <li>
+            <Navlink activeClassName="active" to="/eventos">Eventos</Navlink>
+          </li>
+          <li>
+            <Navlink to="/eventos-participados">Eventos participados</Navlink>
+          </li>
+          <li>
+            <Navlink to="/perfil-user">Editar Perfil</Navlink>
+          </li>
+          <li>
+            <Logout to="/">Sair</Logout>
+          </li>
+        </ul>
+      </Menu>
+    }
+  />
   </Header>
 );
 
