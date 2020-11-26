@@ -68,19 +68,20 @@ export default function Report({ match }) {
           </thead>
           <tbody>
             <tr>
-              <td width="20%">{event.inscricoes.rows[0].Data}</td>
+              <td width="22%">{event.inscricoes.rows[0].Data}</td>
               <td width="20%">{event.inscricoes.rows[0].locai.Nome}</td>
               <td width="20%">{event.inscricoes.count}</td>
                 {event.media === null && (
-                  <td width="40%">Sem avaliações</td>
+                  <td width="43%">Sem avaliações</td>
                 )}
                 {event.media > 0 && (
-                  <td width="40%">
+                  <td width="43%">
                     <StarRatings
                         rating={event.media}
                         starRatedColor="rgb(255, 204, 0)"
                         numberOfStars={5}
-                        starDimension={'20px'}
+                        starDimension={'25px'}
+                        starSpacing={'3px'}
                         name='rating'/>
                   </td>
                 )}
@@ -94,8 +95,8 @@ export default function Report({ match }) {
           <thead>
             <tr>
               <th width="40%">Nome</th>
-              <th width="20%">Presença</th>
-              <th width="40%">Avaliação</th>
+              <th width="15%">Presença</th>
+              <th width="45%">Avaliação</th>
             </tr>
           </thead>
           <tbody>
@@ -104,17 +105,18 @@ export default function Report({ match }) {
               <td width="40%">{participant.Nome}</td>
               {participant.Inscricoes.Presenca === true && (
                 <>
-                  <td width="20%">Sim</td>
+                  <td width="15%">Sim</td>
                   {participant.Inscricoes.Avaliacao === 0 && (
-                    <td width="40%">Não avaliou</td>
+                    <td width="45%">Não avaliou</td>
                   )}
                   {participant.Inscricoes.Avaliacao > 0 && (
-                    <td width="40%">
+                    <td width="45%">
                       <StarRatings
                         rating={participant.Inscricoes.Avaliacao}
                         starRatedColor="rgb(255, 204, 0)"
                         numberOfStars={5}
-                        starDimension={'20px'}
+                        starDimension={'25px'}
+                        starSpacing={'3px'}
                         name='rating'/>
                     </td>
                   )}

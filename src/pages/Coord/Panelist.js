@@ -45,17 +45,17 @@ export default function Panelist() {
         <Table>
           <thead>
             <tr>
-              <th width="33%">Nome</th>
-              <th width="33%">Email</th> 
-              <th width="33%">Curriculo</th>
+              <th width="30%">Nome</th>
+              <th width="30%">Email</th> 
+              <th width="40%">Curriculo</th>
             </tr>
           </thead>
           <tbody>
             {panelists.map(panelist => (
             <tr key={panelist.idPalestrante}>
-              <td width="33%">{panelist.Nome}</td>
-              <td width="33%">{panelist.Email}</td>
-              <td width="33%">{panelist.Curriculo}</td>
+              <td width="30%">{panelist.Nome}</td>
+              <td width="30%">{panelist.Email}</td>
+              <td width="40%">{panelist.Curriculo}</td>
             </tr>
             ))}
           </tbody>

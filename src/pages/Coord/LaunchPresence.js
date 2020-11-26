@@ -96,7 +96,7 @@ export default function LaunchPresence({ match }) {
       <>
         <HeaderCoord />
         <Container>
-          <S.Title>Aperte o botão para lançar a presença de algum participante.</S.Title>
+          <S.Title>Aperte o botão correspondente de algum participante.</S.Title>
             <Table>
               <thead>
                 <tr>

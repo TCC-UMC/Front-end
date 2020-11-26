@@ -74,6 +74,8 @@ export default function Events({ match }) {
           <S.Venue>Horario de Termino {Event.HorarioTermino}</S.Venue>
           <S.Venue>Local: {Event.NomeLocal}</S.Venue>
           <S.Venue>Capacidade Máxima: {Event.CapMax}</S.Venue>
+          <br/>
+          <br/>
           <S.Title>Sobre o palestrante</S.Title>
           <S.Venue>Nome: {Event.NomePalestrante}</S.Venue>
           <S.Venue>Curriculo: {Event.CVPalestrante}</S.Venue>
@@ -112,6 +114,7 @@ export default function Events({ match }) {
           {
             Type === 'participante' && inscrito && (
               <>
+              <br/>
               <S.Button>
                 Você está inscrito nesse evento!
               </S.Button>
@@ -124,7 +127,8 @@ export default function Events({ match }) {
           {
             Type === 'coordenador' && (
               <>
-                <S.LinkBlue to={`/editar-evento/${Event.idPalestra}`}>Editar evento</S.LinkBlue>
+                <br/>
+                <S.LinkBlue to={`/editar-evento/${Event.idPalestra}`}>Editar</S.LinkBlue>
                 <S.LinkBlue to={`/lancar-presencas/${Event.idPalestra}`}>Lançar Presencas</S.LinkBlue>
                 <S.LinkBlue to={`/relatorio/${Event.idPalestra}`}>Relatorio</S.LinkBlue>
               </>

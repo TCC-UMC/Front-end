@@ -62,7 +62,7 @@ export default function Places() {
       <br/>
       <Row>
       <Link to="/cadastrar-local" className="decoration-none ">
-        <Button buttonColor="#195088">Cadastrar Novo Local</Button>
+        <Button buttonColor="#195088">Novo Local</Button>
       </Link>
         
       </Row>

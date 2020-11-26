@@ -30,15 +30,22 @@ export const Row = styled.div`
     clear: both;
   }
   input, select {
-  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
 }
 
+select {
+  width: 100%;
+}
+
+input {
+  width: 96%;
+}
+
   textarea {
-    width: 100%;
+    width: 99%;
     height: 100%;
   }
 
@@ -46,6 +53,18 @@ label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
+
+@media (max-width: 425px) {
+    input {
+      width: 90%;
+    }
+    select {
+      width: 100%;
+    }
+    textarea {
+      width: 98%;
+    }
+  }  
 `;
 
 export const Col25 = styled.div`

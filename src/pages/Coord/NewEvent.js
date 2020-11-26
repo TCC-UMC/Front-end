@@ -135,7 +135,7 @@ export default function NewEvent() {
           </Row>
           <Row>
             <Col25>
-              <label>Capacidade máxima</label>
+              <label>Capacidade</label>
             </Col25>
             <Col75>
               <input 
@@ -201,7 +201,7 @@ export default function NewEvent() {
           </Row>
           <Row>
             <Col25>
-              <label>Horario do Inicio</label>
+              <label>Inicio</label>
             </Col25>
             <Col75>
               <input 
@@ -214,7 +214,7 @@ export default function NewEvent() {
           </Row>
           <Row>
             <Col25>
-              <label>Horario do Términio</label>
+              <label>Término</label>
             </Col25>
             <Col75>
               <input 

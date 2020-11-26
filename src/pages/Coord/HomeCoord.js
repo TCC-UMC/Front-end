@@ -43,7 +43,7 @@ export default function HomeCoord() {
         <>
           <Header/>
           <Container>
-            <S.Title>Eventos cadastradas por você</S.Title>
+            <S.Title>Eventos cadastrados por você</S.Title>
             <S.List >
             {events.map(event => (
               <S.Event key={event.idPalestra}>
@@ -56,7 +56,7 @@ export default function HomeCoord() {
                 <S.Venue>
                   <strong>Local: </strong> {event.locai.Nome}
                   <br/>
-                  <strong>Capaxidade máxima </strong> {event.CapMax}
+                  <strong>Capacidade máxima </strong> {event.CapMax}
                 </S.Venue>
                 <S.Venue>
                   <strong>Inicio: </strong> {event.HorarioInicio}
