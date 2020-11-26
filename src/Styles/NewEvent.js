@@ -10,6 +10,11 @@ export const ContainerC = styled(FlexCenter)`
   width: 65%;
   margin-left: auto;
   margin-right: auto;
+  @media (max-width: 800px) {
+    width: 90%;
+    padding: 10px;
+    font-size: 14px;
+  }  
 `;
 
 export const InputN = styled(Input)`

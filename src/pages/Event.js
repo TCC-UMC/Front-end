@@ -79,7 +79,8 @@ export default function Events({ match }) {
           <S.Venue>Curriculo: {Event.CVPalestrante}</S.Venue>
           {
             Type === 'participante' && !inscrito && (
-                <S.Button onClick={async () => {
+              <>
+              <S.Button onClick={async () => {
                   let fkPalestra = Event.idPalestra;
                   const Presenca = false;
                   const Avaliacao = 0;
@@ -102,13 +103,22 @@ export default function Events({ match }) {
               }}>
                 Inscrever-se
               </S.Button>
+              <S.LinkBlue to={'/eventos'} className="decoration-none ">
+                Voltar
+              </S.LinkBlue>
+              </>
             )
           }
           {
             Type === 'participante' && inscrito && (
+              <>
               <S.Button>
                 Você está inscrito nesse evento!
               </S.Button>
+              <S.LinkBlue to={'/eventos'} className="decoration-none ">
+                Voltar
+              </S.LinkBlue>
+              </>
             )
           }
           {

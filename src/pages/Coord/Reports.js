@@ -60,29 +60,28 @@ export default function Report({ match }) {
         <Table>
           <thead>
             <tr>
-              <th>Data</th>
-              <th>Local</th> 
-              <th>Inscritos</th>
-              <th>Avaliações</th>
-              <th>Média das notas</th>
+              <th width="20%">Data</th>
+              <th width="20%">Local</th> 
+              <th width="20%">Inscritos</th>
+              <th width="40%">Média das notas</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{event.inscricoes.rows[0].Data}</td>
-              <td>{event.inscricoes.rows[0].locai.Nome}</td>
-              <td>{event.inscricoes.count}</td>
-              <td>{event.avaliacoes}</td>
+              <td width="20%">{event.inscricoes.rows[0].Data}</td>
+              <td width="20%">{event.inscricoes.rows[0].locai.Nome}</td>
+              <td width="20%">{event.inscricoes.count}</td>
                 {event.media === null && (
-                  <td>Sem avaliações</td>
+                  <td width="40%">Sem avaliações</td>
                 )}
                 {event.media > 0 && (
-                  <td>
+                  <td width="40%">
                     <StarRatings
-                      rating={event.media}
-                      starRatedColor="rgb(255, 204, 0)"
-                      numberOfStars={5}
-                      name='rating' />
+                        rating={event.media}
+                        starRatedColor="rgb(255, 204, 0)"
+                        numberOfStars={5}
+                        starDimension={'20px'}
+                        name='rating'/>
                   </td>
                 )}
             </tr>
@@ -94,29 +93,28 @@ export default function Report({ match }) {
         <Table>
           <thead>
             <tr>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Presença</th>
-              <th>Avaliação</th>
+              <th width="40%">Nome</th>
+              <th width="20%">Presença</th>
+              <th width="40%">Avaliação</th>
             </tr>
           </thead>
           <tbody>
           {participants.map(participant =>(
             <tr key={participant.Email}>
-              <td>{participant.Nome}</td>
-              <td>{participant.Email}</td>
+              <td width="40%">{participant.Nome}</td>
               {participant.Inscricoes.Presenca === true && (
                 <>
-                  <td>Sim</td>
+                  <td width="20%">Sim</td>
                   {participant.Inscricoes.Avaliacao === 0 && (
-                    <td>Não avaliou</td>
+                    <td width="40%">Não avaliou</td>
                   )}
                   {participant.Inscricoes.Avaliacao > 0 && (
-                    <td>
+                    <td width="40%">
                       <StarRatings
                         rating={participant.Inscricoes.Avaliacao}
                         starRatedColor="rgb(255, 204, 0)"
                         numberOfStars={5}
+                        starDimension={'20px'}
                         name='rating'/>
                     </td>
                   )}
@@ -124,8 +122,8 @@ export default function Report({ match }) {
               )}
               {participant.Inscricoes.Presenca === false && (
                 <>
-                  <td>Não</td>
-                  <td>Não pode avaliar</td>
+                  <td width="20%">Não</td>
+                  <td width="40%">Não pode avaliar</td>
                 </>
               )}
             </tr>

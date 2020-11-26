@@ -113,7 +113,7 @@ export default function NewPanelist() {
           </Row>
           <Row>
             <Col25>
-              <label>Informações/Curriculo</label>
+              <label>Curriculo</label>
             </Col25>
             <Col75>
               <textarea

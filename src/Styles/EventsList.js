@@ -25,6 +25,9 @@ export const Event = styled.div`
 
 export const Title = styled.h1`
   text-align: center;
+  @media (max-width: 800px) {
+    font-size: 20px;
+  }
 `;
 
 export const DateTime = styled.p`

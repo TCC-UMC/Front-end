@@ -59,6 +59,9 @@ export const Button = styled.button`
   margin-top: 20px;
   font-weight: bold;
   cursor: pointer;
+  @media(max-width: 800px) {
+    font-size: 20px;
+  }
 `;
 
 export const LinkGrey = styled(Link)`

@@ -45,19 +45,17 @@ export default function Panelist() {
         <Table>
           <thead>
             <tr>
-              <th width="20%">Nome</th>
-              <th width="25%">Email</th> 
-              <th width="20%">Telefone</th>
-              <th width="35%">Curriculo</th>
+              <th width="33%">Nome</th>
+              <th width="33%">Email</th> 
+              <th width="33%">Curriculo</th>
             </tr>
           </thead>
           <tbody>
             {panelists.map(panelist => (
             <tr key={panelist.idPalestrante}>
-              <td width="20%">{panelist.Nome}</td>
-              <td width="25%">{panelist.Email}</td>
-              <td width="20%">{panelist.Telefone}</td>
-              <td width="35%">{panelist.Curriculo}</td>
+              <td width="33%">{panelist.Nome}</td>
+              <td width="33%">{panelist.Email}</td>
+              <td width="33%">{panelist.Curriculo}</td>
             </tr>
             ))}
           </tbody>
@@ -66,7 +64,7 @@ export default function Panelist() {
       <br/>
       <Row>
       <Link to="/cadastrar-palestrante" className="decoration-none ">
-        <Button buttonColor="#195088">Cadastrar Novo Palestrante</Button>
+        <Button buttonColor="#195088">Novo Palestrante</Button>
       </Link>
         
       </Row>

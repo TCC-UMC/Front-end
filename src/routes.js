@@ -40,7 +40,7 @@ export default function Routes() {
                 <Route exact path="/recuperar-senha/" component={ForgotPassword} />
                 <Route exact path="/registro" component={Register} />
                 <Route exact path="/redefinir-senha/:id" component={ResetPassword}/>
-                <Route exact path="/evento/:id" component={Event}/>
+                <PrivateRoute exact path="/evento/:id" component={Event}/>
                 <PrivateRoute exact path="/lancar-presencas/:id" component={LaunchPresence} />
                 <PrivateRoute exact path="/eventos" component={HomeUser} />
                 <PrivateRoute exact path="/eventos-participados" component={EventsUser} />

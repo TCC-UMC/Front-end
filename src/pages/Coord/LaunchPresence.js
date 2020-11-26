@@ -96,29 +96,27 @@ export default function LaunchPresence({ match }) {
       <>
         <HeaderCoord />
         <Container>
-          <S.Title>Para lançar as presenças, aperte no botão correspondente do participante.</S.Title>
+          <S.Title>Aperte o botão para lançar a presença de algum participante.</S.Title>
             <Table>
               <thead>
                 <tr>
-                  <th width="30%">Nome</th>
-                  <th width="30%">Email</th>
-                  <th width="20%">Telefone</th>
+                  <th width="40%">Nome</th>
+                  <th width="40%">Email</th>
                   <th width="20%">Presença</th>
                 </tr>
               </thead>
               <tbody>
                 {Participants.map(participant => (
                   <tr key={participant.idParticipante}>
-                    <td width="30%">{participant.Nome}</td>
-                    <td width="30%">{participant.Email}</td>
-                    <td width="20%">{participant.Telefone}</td>
+                    <td width="40%">{participant.Nome}</td>
+                    <td width="40%">{participant.Email}</td>
                     <td width="20%">
                       {
                         participant.Inscricoes.Presenca === false && (
                           <button 
                             value={participant.idParticipante}
                             onClick={e => handleInput(e, "value")}>
-                              Lançar presença 
+                              Lançar
                           </button>
                         )
                       }

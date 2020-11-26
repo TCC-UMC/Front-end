@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Table = styled.table`
+    overflow-x:auto;
     margin-top: 50px;
     border-collapse: collapse;
     border-spacing: 0px;
@@ -18,5 +19,7 @@ export const Table = styled.table`
       background-color: #008037;
       color: #fff;
     }
-
+    @media (max-width: 800px) {
+      font-size: 15px;
+  }
 `;

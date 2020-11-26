@@ -87,8 +87,7 @@ export default function EventsUser() {
                 <tr>
                   <th width="20%">Tema</th>
                   <th width="20%">Data</th> 
-                  <th width="20%">Local</th>
-                  <th width="40%">Sua Avaliação</th>
+                  <th width="60%">Sua Avaliação</th>
                 </tr>
               </thead>
               {events.map(event => (
@@ -96,12 +95,12 @@ export default function EventsUser() {
                 <tr>
                   <td width="20%">{event.Tema}</td>
                   <td width="20%">{event.Data}</td>
-                  <td width="20%">{event.locai.Nome}</td>
-                  <td width="40%">
+                  <td width="60%">
                     <StarRatings
                       rating={event.Inscricoes.Avaliacao}
                       starRatedColor="rgb(255, 204, 0)"
                       numberOfStars={5}
+                      starDimension={'25px'}
                       name='rating' />
                   </td>
                 </tr>
@@ -132,6 +131,7 @@ export default function EventsUser() {
                   starHoverColor="rgb(255, 204, 0)"
                   changeRating={setRating}
                   numberOfStars={5}
+                  starDimension={'40px'}
                   name='ratingInput'
                 />
                 <br/>
