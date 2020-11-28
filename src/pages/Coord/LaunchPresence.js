@@ -11,7 +11,7 @@ import {Row} from '../../Styles/NewEvent';
 import HeaderCoord from '../../components/HeaderCoord';
 
 export default function LaunchPresence({ match }) {
-  const idPalestra = match.params.id;
+  const idPalestra = (parseInt(match.params.id, 10));
   const [Participants, setParticipants] = useState([]);
   const [loading, setLoading] = useState('loading');
 
@@ -57,13 +57,39 @@ export default function LaunchPresence({ match }) {
         headers: headers
       });
       console.log(response);
-      alert('Presença lançada com sucesso.');
+      if (response.status === 200) {
+        alert('Presença lançada com sucesso.');
+        gerarCertificado(fkParticipante)
+      }
+      
     } catch(err) {
       if (err) {
         console.log(err.response.data.error);
         alert(err.response.data.error);
       }
     }
+  }
+
+  async function gerarCertificado(idParticipante) {
+    const data = {
+      idPalestra
+    }
+    try {
+      const response = await Api.post(`/loggedUser/gerarCertificado/${idParticipante}`, data, {
+        headers: headers
+      });
+      console.log(response);
+      if (response.status === 200) {
+        console.log('Certificado gerado');
+      }
+      
+    } catch(err) {
+      if (err) {
+        console.log(err.response.data.error);
+        alert(err.response.data.error);
+      }
+    }
+
   }
 
   function Loading() {
@@ -108,9 +134,9 @@ export default function LaunchPresence({ match }) {
               <tbody>
                 {Participants.map(participant => (
                   <tr key={participant.idParticipante}>
-                    <td width="40%">{participant.Nome}</td>
-                    <td width="40%">{participant.Email}</td>
-                    <td width="20%">
+                    <td width="30%">{participant.Nome}</td>
+                    <td width="45%">{participant.Email}</td>
+                    <td width="25%">
                       {
                         participant.Inscricoes.Presenca === false && (
                           <button 
@@ -122,7 +148,7 @@ export default function LaunchPresence({ match }) {
                       }
                       {
                         participant.Inscricoes.Presenca === true && (
-                          <button>Participante presente.</button>
+                          <button>Presente</button>
                         )
                       }
                     </td>

@@ -19,7 +19,7 @@ const HeaderAdm = () => (
               <Navlink activeClassName="active" to="/coordenadores">Coordenadores</Navlink>
             </li>
             <li>
-              <Navlink to="/cadastrar-coordenadores">Cadastrar novo coordenador</Navlink>
+              <Navlink to="/cadastrar-coordenadores">Novo coordenador</Navlink>
             </li>
             <li>
               <Logout to="/">Sair</Logout>

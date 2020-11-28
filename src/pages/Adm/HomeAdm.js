@@ -43,7 +43,6 @@ export default function HomeAdm() {
           <tr>
             <th>Nome</th>
             <th>Email</th> 
-            <th>Telefone</th>
             <th>Curso</th>
           </tr>
         </thead>
@@ -52,7 +51,6 @@ export default function HomeAdm() {
             <tr>
               <td>{coord.Nome}</td>
               <td>{coord.Email}</td>
-              <td>{coord.Telefone}</td>
               <td>{coord.CursoCoord}</td>
             </tr>
           </tbody>
