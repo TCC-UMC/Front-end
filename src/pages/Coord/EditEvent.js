@@ -256,10 +256,10 @@ export default function EditEvent({ match }) {
             </Col75>
           </Row>
           <Row>
+            <Button type="submit" buttonColor="#008037">Confirmar</Button>
             <Link to={`/evento/${idPalestra}`} className="decoration-none ">
               <Button>Voltar</Button>
             </Link>
-            <Button type="submit" buttonColor="#008037">Confirmar</Button>
           </Row>
         </form>
         </ContainerC>
