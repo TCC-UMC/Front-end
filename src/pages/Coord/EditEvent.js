@@ -146,7 +146,7 @@ export default function EditEvent({ match }) {
         headers: headers
       });
       alert('Alterado com sucesso!');
-      return history.push(`/event/${idPalestra}`);
+      return history.push(`/evento/${idPalestra}`);
     } catch(err) {
       if (err) {
         alert(err.response.data.error)
