@@ -49,8 +49,6 @@ export default function EditCoord() {
         setCursoCoord(value);
       } 
     }
-    console.log(name)
-    console.log(value);
   }
 
   async function handleSubmit(e) {
@@ -59,14 +57,12 @@ export default function EditCoord() {
       return alert('Você não escreveu nada!');
     }
     try {
-      const response = await Api.put('/loggedUser/updateCoord', Data, {
+      await Api.put('/loggedUser/updateCoord', Data, {
         headers: headers
       });
-      console.log(response);
       alert('Alterado com sucesso!');
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

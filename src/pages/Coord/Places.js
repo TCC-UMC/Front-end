@@ -24,11 +24,9 @@ export default function Places() {
           const response = await Api.get('/loggedUser/listLocais', {
             headers: headers
           });
-          console.log(response);
           setPlaces(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }

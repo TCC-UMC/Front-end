@@ -33,7 +33,6 @@ export default function RecoverPassword() {
        
       } catch (err) {
         if (err.response) {
-          console.log(err.response.data.error);
           alert(err.response.data.error)
         }
        

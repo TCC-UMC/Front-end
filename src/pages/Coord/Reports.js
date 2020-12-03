@@ -30,7 +30,6 @@ export default function Report({ match }) {
           const response = await Api.get(`/loggedUser/relatorioPalestra/${idPalestra}`, {
             headers: headers
           });
-          console.log(response.data);
           if (response.data.message[0]) {
             setEvents(response.data.message[0]);
             setParticipants(response.data.message[0].inscricoes.rows[0].Participantes);
@@ -38,7 +37,6 @@ export default function Report({ match }) {
           } 
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }

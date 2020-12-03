@@ -20,11 +20,9 @@ export default function EventsList() {
           const response = await Api.get('/loggedUser/listPalestras', {
             headers: headers
           });
-          console.log(response);
           setEvents(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }

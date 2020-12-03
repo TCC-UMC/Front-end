@@ -24,11 +24,9 @@ export default function Panelist() {
           const response = await Api.get('/loggedUser/listPalestrantes', {
             headers: headers
           });
-          console.log(response);
           setPanelist(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }

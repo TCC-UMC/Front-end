@@ -30,11 +30,9 @@ export default function NewEvent() {
           const response = await Api.get('/loggedUser/listPalestrantes', {
             headers: headers
           });
-          console.log(response);
           setPalestrantes(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }
@@ -49,11 +47,9 @@ export default function NewEvent() {
           const response = await Api.get('/loggedUser/listLocais', {
             headers: headers
           });
-          console.log(response);
           setLocais(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }
@@ -77,23 +73,16 @@ export default function NewEvent() {
     };
   
     try {
-      console.log(data.Data);
-      console.log(typeof(data.HorarioInicio));
-      console.log(typeof(data.HorarioTermino));
-      console.log(typeof(data.fkLocais));
-      console.log("Isso aqui >" + data);
       const response = await Api.post('/loggedUser/registerPalestra', data, {
         headers: headers
       });
       
       if (response.status === 201) {
-        console.log(response);
         alert("Evento criado com sucesso.");
         return history.push('/meus-eventos');
       }
     } catch(err) {
       if (err) {
-        console.log(err.response);
         alert(err.response.data.error)
       }
     }

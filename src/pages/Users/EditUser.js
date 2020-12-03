@@ -58,8 +58,6 @@ export default function EditUser() {
         setProfissao(value);
       }
     }
-    console.log(name)
-    console.log(value);
   }
 
   async function handleSubmit(e) {
@@ -68,14 +66,12 @@ export default function EditUser() {
       return alert('Você não escreveu nada!');
     }
     try {
-      const response = await Api.put('/loggedUser/updateParticipante', Data, {
+        await Api.put('/loggedUser/updateParticipante', Data, {
         headers: headers
       });
-      console.log(response);
       alert('Alterado com sucesso!');
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

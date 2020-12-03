@@ -41,13 +41,11 @@ export default function ResetPassword() {
       });
       
       if (response.status === 200) {
-        console.log(response);
         alert("Senha alterada com sucesso.");
         return history.push('/');
       }
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

@@ -21,12 +21,10 @@ export default function HomeCoord() {
           const response = await Api.get('/loggedUser/PalestrasCoord', {
             headers: headers
           });
-          console.log(response);
           setLoading('0');
           setEvents(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }

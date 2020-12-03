@@ -38,13 +38,11 @@ export default function NewPanelist() {
         headers: headers
       });
       if (response.status === 201) {
-        console.log(response);
         alert("Palestrante cadastrado com sucesso.");
         return history.push('/palestrantes');
       }
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

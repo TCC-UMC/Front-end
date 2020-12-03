@@ -25,7 +25,6 @@ export default function Events({ match }) {
           const response = await Api.get(`/loggedUser/listPalestras/${id}`, {
             headers: headers
           });
-          console.log(response);
           if (response.data.message[0]) {
             setInscrito(response.data.inscrito);
             setEvent(response.data.message[0]);
@@ -36,7 +35,6 @@ export default function Events({ match }) {
          
         } catch(err) {
           if (err) {
-            console.log(err);
             alert(err);
           }
         }
@@ -91,14 +89,12 @@ export default function Events({ match }) {
                       headers: headers
                     });
                     if (response.status === 201) {
-                      console.log(response);
                       alert("Você foi inscrito na palestra com sucesso.");
                       setInscrito(true);
                     }
                     
                   } catch(err) {
                     if (err) {
-                      console.log(err.response.data.error);
                       alert(err.response.data.error)
                     }
                   }

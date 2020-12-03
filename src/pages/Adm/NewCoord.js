@@ -38,13 +38,11 @@ export default function NewAdm() {
       });
       
       if (response.status === 201) {
-        console.log(response);
         alert("Coordenador cadastrado com sucesso.");
         return history.push('/coordenadores');
       }
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

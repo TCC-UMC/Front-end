@@ -26,7 +26,6 @@ export default function Logon() {
         headers: headers
       });
       const user = response.data.auth;
-      console.log(user);
       if(response.data.auth.Type === "participante"){
         localStorage.token = user.token;
         localStorage.setItem('type', user.Type);
@@ -44,7 +43,6 @@ export default function Logon() {
       }
     } catch (err) {
       if (err.response) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
      

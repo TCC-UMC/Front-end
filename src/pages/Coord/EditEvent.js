@@ -34,7 +34,6 @@ export default function EditEvent({ match }) {
           const response = await Api.get(`/loggedUser/listPalestras/${idPalestra}`, {
             headers: headers
           });
-          console.log(response);
           setEvent(response.data.message[0]);
           console.log(Event);
           const date = response.data.message[0].Data;
@@ -51,7 +50,6 @@ export default function EditEvent({ match }) {
           }));
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }
@@ -66,11 +64,9 @@ export default function EditEvent({ match }) {
           const response = await Api.get('/loggedUser/listLocais', {
             headers: headers
           });
-          console.log(response);
           setLocais(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }
@@ -138,8 +134,6 @@ export default function EditEvent({ match }) {
         setLocal(value);
       }
     }
-    console.log(name)
-    console.log(value);
   }
 
   async function handleSubmit(e) {
@@ -147,17 +141,14 @@ export default function EditEvent({ match }) {
     if (typeof data === 'object' && Object.keys(data).length === 0) {
       return alert('Você não escreveu nada!');
     }
-    console.log(data);
     try {
-      const response = await Api.put('/loggedUser/updatePalestra', data, {
+      await Api.put('/loggedUser/updatePalestra', data, {
         headers: headers
       });
-      console.log(response);
       alert('Alterado com sucesso!');
       return history.push(`/event/${idPalestra}`);
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

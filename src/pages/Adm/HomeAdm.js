@@ -21,11 +21,9 @@ export default function HomeAdm() {
           const response = await Api.get('/loggedUser/listCoord', {
             headers: headers
           });
-          console.log(response);
           setCoords(response.data.message);
         } catch(err) {
           if (err) {
-            console.log(err.response.data.error);
             alert(err.response.data.error)
           }
         }

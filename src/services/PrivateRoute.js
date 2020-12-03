@@ -4,7 +4,6 @@ import { Route, Redirect } from 'react-router';
 
 const PrivateRoute = props => {
   const isLogged = localStorage.getItem('token');
- // const type = localStorage.getItem('type');
 
   if (isLogged === "0" || !isLogged) {
     return <Redirect to="/"/>

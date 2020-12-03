@@ -26,7 +26,6 @@ export default function LaunchPresence({ match }) {
           const response = await Api.get(`/loggedUser/listInscricoesPalestra/${idPalestra}`, {
             headers: headers
           });
-          console.log(response);
           if (response.data.message.Participantes[0]) {
             setParticipants(response.data.message.Participantes);
             setLoading('sucess');
@@ -36,7 +35,6 @@ export default function LaunchPresence({ match }) {
          
         } catch(err) {
           if (err) {
-            console.log(err.response);
             alert(err);
           }
         }
@@ -46,7 +44,6 @@ export default function LaunchPresence({ match }) {
   }, []); //eslint-disable-line
 
   async function handleInput(e) {
-    console.log(e.target.value);
     const fkParticipante = (parseInt(e.target.value, 10));
     const data = {
       idPalestra,
@@ -56,7 +53,6 @@ export default function LaunchPresence({ match }) {
       const response = await Api.put('/loggedUser/lancarPresenca', data, {
         headers: headers
       });
-      console.log(response);
       if (response.status === 200) {
         alert('Presença lançada com sucesso.');
         gerarCertificado(fkParticipante)
@@ -64,7 +60,6 @@ export default function LaunchPresence({ match }) {
       
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error);
       }
     }
@@ -78,14 +73,12 @@ export default function LaunchPresence({ match }) {
       const response = await Api.post(`/loggedUser/gerarCertificado/${idParticipante}`, data, {
         headers: headers
       });
-      console.log(response);
       if (response.status === 200) {
-        console.log('Certificado gerado');
+        alert('Certificado lançado');
       }
       
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error);
       }
     }

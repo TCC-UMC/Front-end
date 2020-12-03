@@ -28,13 +28,11 @@ export default function NewPlace() {
         headers: headers
       });
       if (response.status === 201) {
-        console.log(response);
         alert("Local cadastrado com sucesso.");
         return history.push('/locais');
       }
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

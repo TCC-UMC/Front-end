@@ -23,16 +23,13 @@ export default function EventsUser() {
   useEffect(() => {
     async function getEvents() {
       try {
-        console.log('Content-Type: ' + headers["Content-Type"] + '\nAuthorization: ' + headers.Authorization)
         const response = await Api.get(`/loggedUser/listPalestrasPresentes`, {
           headers: headers
         });
-        console.log(response);
         setEvents(response.data.message.Palestras);
         setLoading('0');
       } catch(err) {
         if (err) {
-          console.log(err.response);
           alert(err)
         }
       }
@@ -43,9 +40,6 @@ export default function EventsUser() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(fkPalestra);
-
     if(fkPalestra === undefined) {
       return alert('Selecione um evento!');
     } else if (rating === undefined){
@@ -60,14 +54,12 @@ export default function EventsUser() {
     }
 
     try {
-      const response = await Api.put('/loggedUser/avaliar', data, {
+      await Api.put('/loggedUser/avaliar', data, {
         headers: headers
       });
-      console.log(response);
       alert("Avaliação efetuada com sucesso.");
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }

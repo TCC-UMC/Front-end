@@ -49,13 +49,11 @@ export default function Register() {
       });
       
       if (response.status === 201) {
-        console.log(response);
         alert("Cadastro efetuado com sucesso, use seu email e senha para logar.");
         return history.push('/');
       }
     } catch(err) {
       if (err) {
-        console.log(err.response.data.error);
         alert(err.response.data.error)
       }
     }
